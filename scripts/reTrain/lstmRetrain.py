@@ -103,6 +103,8 @@ nnHM.compile(
     loss='mse', # o 'mean_squared_error', permite un entrenamiento mas rapido del modelo
     metrics=[tf.keras.metrics.MeanSquaredError()]
 )
+
+
 history = nnHM.fit_generator(
     train_gen,
     epochs=7,      # basadose netamente en experiencia (o sin apoyo teorico), mantener este valor entre 7 y 15, a mas de 15 solo se hace overfit
