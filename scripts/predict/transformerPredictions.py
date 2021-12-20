@@ -101,16 +101,17 @@ predictions.AMBIENT_TEMPERATURE = predictions.AMBIENT_TEMPERATURE.round(3)
 predictions.HUMIDITY = predictions.HUMIDITY.round(3)
 predictions.AIR_PRESSURE = predictions.AIR_PRESSURE.round(3)
 
+
 try:
     predictions.to_sql('transformerPredictions',mydb,if_exists='append',index=False)
-    query = "SHOW COLUMNS FROM `weather` LIKE 'id';"
+    query = "SHOW COLUMNS FROM `transformerPredictions` LIKE 'id';"
     a = mydb.execute(query)
     if a.fetchall(): 
         print("Columna id existente")
     else: 
         print("Añadiendo columna id")
-        query = "ALTER TABLE arimaPredictions ADD id INT PRIMARY KEY AUTO_INCREMENT;"
-        mydb.execute(query)
+    query = "ALTER TABLE transformerPredictions ADD id INT PRIMARY KEY AUTO_INCREMENT;"
+    mydb.execute(query)
 except:
     mydb.close() #close the connectionexcept Exception as e:
     print('Error en conexion a base de datos')

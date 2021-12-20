@@ -98,13 +98,13 @@ stackPreds['utc'] = pandas.to_datetime(stackPreds['utc'])
 
 try:
     stackPreds.to_sql('rfPredictions',mydb,if_exists='append',index=False)
-    query = "SHOW COLUMNS FROM `weather` LIKE 'id';"
+    query = "SHOW COLUMNS FROM `rfPredictions` LIKE 'id';"
     a = mydb.execute(query)
     if a.fetchall(): 
         print("Columna id existente")
     else: 
         print("Añadiendo columna id")
-        query = "ALTER TABLE arimaPredictions ADD id INT PRIMARY KEY AUTO_INCREMENT;"
+        query = "ALTER TABLE rfPredictions ADD id INT PRIMARY KEY AUTO_INCREMENT;"
         mydb.execute(query)
 except:
     mydb.close() #close the connectionexcept Exception as e:

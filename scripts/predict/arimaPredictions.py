@@ -92,7 +92,7 @@ stackPreds.AIR_PRESSURE = stackPreds.AIR_PRESSURE.round(3)
 
 try:
     stackPreds.to_sql('arimaPredictions',mydb,if_exists='append',index=False)
-    query = "SHOW COLUMNS FROM `weather` LIKE 'id';"
+    query = "SHOW COLUMNS FROM `arimaPredictions` LIKE 'id';"
     a = mydb.execute(query)
     if a.fetchall(): 
         print("Columna id existente")

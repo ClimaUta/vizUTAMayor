@@ -68,7 +68,7 @@ stackPredictors.columns = ['hour','day','month']
 # entrenamiento, por lo tanto, estas metricas han de calcularse también para respetar la normalizacion (promedios y dev_est)
 # con los que fue entrenado el modelo
 
-df = pandas.read_csv("dataPreprocessed.csv")
+df = pandas.read_csv("../dataPreprocessed.csv")
 df = createTimeFeatures(df)
 dates_df = df.pop('year')
 dates_df = df.pop('utc')
@@ -118,13 +118,13 @@ try:
     # engine = sqlalchemy.create_engine("mysql+pymysql://"+credentials[0]+":"+credentials[1]+"@"+credentials[2]+"/"+credentials[3] )
     # mydb = engine.connect()
     stackPreds.to_sql('dnnPredictions',mydb,if_exists='append',index=False)
-    query = "SHOW COLUMNS FROM `weather` LIKE 'id';"
+    query = "SHOW COLUMNS FROM `dnnPredictions` LIKE 'id';"
     a = mydb.execute(query)
     if a.fetchall(): 
         print("Columna id existente")
     else: 
         print("Añadiendo columna id")
-        query = "ALTER TABLE arimaPredictions ADD id INT PRIMARY KEY AUTO_INCREMENT;"
+        query = "ALTER TABLE dnnPredictions ADD id INT PRIMARY KEY AUTO_INCREMENT;"
         mydb.execute(query)
 except:
     mydb.close() #close the connectionexcept Exception as e:
