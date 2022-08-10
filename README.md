@@ -72,8 +72,8 @@ Y mayor contextualización se provee meidnate el notebook pres9-8.ipynb
 ### Explicación de pasos
 1. Carga Datos Preprocesados : Lectura de *"dataPreprocessed.csv"*. Este es un archivo csv que respalda los datos locales en formato horario, a través del script *dataPreprocessing*, se puede considerar esto último como un *"paso 0"* pues es necesario para evitar que cada proceso de reentramiento haga querys pesadas a la DB
 2. Preproceasmiento : Depende de cada modelo, detalles en notebook y codigo de cada modelo
-3. Entranamiento : Depende de cada modelo, detalles en notebook y codigo de cada modelo
-4. Guardado en "../models" : Como de dijo anteriormente, los modelos son guardados en una carpeta externa, la cual mas tarde es leída por los scripts de predicción
+3. Entrenamiento : Depende de cada modelo, detalles en notebook y codigo de cada modelo
+4. Guardado en "../models" : Como se dijo anteriormente, los modelos son guardados en una carpeta externa, la cual mas tarde es leída por los scripts de predicción
 ## De predicción
 Fueron hechos para ser ejecutados en el servidor una vez al día, generando pronosticos a 3 días, todos obedecen la siguiente logica: 
 > *Query* DB -> Carga modelo -> Generación pronósticos -> *Append* a DB 
